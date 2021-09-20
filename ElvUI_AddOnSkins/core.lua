@@ -16,6 +16,7 @@ local addonList = {
 	"DBM",
 	"Skada",
 	"Auctionator",
+	"AscensionUI",
 	"BugSack",
 	"CallToArms",
 	"Postal",
