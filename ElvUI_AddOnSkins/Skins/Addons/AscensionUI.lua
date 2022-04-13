@@ -18,13 +18,13 @@ local function HandleCollections()
     for i = 1, #C.Tab_Info do
         for _, frame in ipairs(itr) do
             local tab = frame["CollectionTab"..i]
-            tab:GetDisabledTexture():SetTexture()
-            tab.BG:SetTexture()
+            --tab:GetDisabledTexture():SetTexture()
+            --tab.BG:SetTexture()
             S:HandleTab(tab)
 
             if i == 1 then
-                tab:ClearAllPoints()
-                tab:Point("TOPLEFT", frame, "BOTTOMLEFT", 20, 1)
+            --tab:ClearAllPoints()
+            --tab:Point("TOPLEFT", frame, "BOTTOMLEFT", 20, 1)
             end
         end
     end
@@ -97,6 +97,7 @@ local function HandleMysticEnchants()
     -- Control Frame
     S:HandleButton(M.ControlFrame.RollButton)
     S:HandleButton(M.ControlFrame.ExtractButton)
+    S:HandleButton(M.ManagerButton)
     M.ControlFrame.MoneyFrame:ClearAllPoints()
     M.ControlFrame.MoneyFrame:SetPoint("CENTER", M.ControlFrame, "CENTER", 0,0)
     M.ControlFrame.TokenFrame:ClearAllPoints()
@@ -105,6 +106,9 @@ local function HandleMysticEnchants()
     M.ControlFrame.TokenFrame.TokenButton:SetPoint("CENTER")
     M.ControlFrame.RollButton:ClearAllPoints()
     M.ControlFrame.RollButton:SetPoint("LEFT", M.ControlFrame, "LEFT", 0, 0)
+
+    --Close button
+    S:HandleCloseButton(M.CloseButton)
 
     -- Paper Doll Slots
     for i = 1, 19 do
@@ -162,6 +166,17 @@ local function HandleMysticEnchants()
             frame.BackgroundTexture:SetTexture(icon)
         end)
     end
+
+    -- Enchant Presets
+    MysticEnchantingFrame.Manager:StripTextures()
+    MysticEnchantingFrame.Manager:CreateBackdrop("Transparent")
+    --S:HandleCloseButton(MysticEnchantingFrame.ManagerClose)
+    --S:HandleScrollBar(MysticEnchantingFrame.Manager.scrollScollBar)
+    MysticEnchantingFrame.Manager.PreviewPaperDoll:StripTextures()
+    --S:HandleCloseButton(MysticEnchantingFrame.PreviewPaperDollClose)
+    S:HandleButton(MysticEnchantingFrame.Manager.PreviewPaperDoll.LoadButton)
+    S:HandleButton(MysticEnchantingFrame.Manager.PreviewPaperDoll.SaveButton)
+
 
     -- Level Frame
     M.LevelFrame:Hide()
@@ -221,8 +236,128 @@ local function HandleKeystoneInfo()
     KeystoneInfo:StripTextures()
     KeystoneInfo:CreateBackdrop("Transparent")
 
-    KeystoneInfo.WeeklyInfo.BG:Hide()
+    --Close button
+    S:HandleCloseButton(KeystoneInfo.CloseButton)
+
+    --[[Previous Button
+    S:HandleNextPrevButton(KeystoneInfo.LeftFramNextButton, "left")
+
+    --Next Button
+    S:HandleNextPrevButton(KeystoneInfo.LeftFramPrevButton, "right")
+]]
+     -- Dropdown
+     S:HandleDropDownBox(KeystoneInfo.DungeonsDropDown)
+     UIDropDownMenu_JustifyText(KeystoneInfo.DungeonsDropDown, "LEFT")
+
+ --    KeystoneInfo.Rightscroll.Content:StripTextures(true)
+
 end
+
+local function HandleCharacterAdvancement()
+    local CharacterAdvancement = CA2
+
+    CharacterAdvancement:StripTextures(true)
+    CharacterAdvancement:CreateBackdrop("Transparent")
+    CharacterAdvancement.Art:StripTextures(true)
+    CharacterAdvancement.CharacterAdvancementMain.Main.BottomFrame.CurrencyAE:StripTextures()
+    CharacterAdvancement.CharacterAdvancementMain.Main.BottomFrame.CurrencyTE:StripTextures()
+
+    -- Reset All Abilities Button
+    S:HandleButton(CharacterAdvancement.CharacterAdvancementMain.Main.BottomFrame.ResetSpellsButton)
+
+    -- Reset All Talents Button
+    S:HandleButton(CharacterAdvancement.CharacterAdvancementMain.Main.BottomFrame.ResetTalentsButton)
+
+    -- Search
+    S:HandleEditBox(CharacterAdvancement.SearchBox)
+
+    --Close button
+    S:HandleCloseButton(CharacterAdvancement.CloseButton)
+
+  --  CharacterAdvancement.CA2.HSKnown.Content:StripTextures()
+  CharacterAdvancement.RarityLimitsFrame:StripTextures()
+  --[[S:HandleButton(CharacterAdvancement.RarityLimitsFrameProgression5)
+  CharacterAdvancement.RarityLimitsFrameProgression4:StripTextures()
+  S:HandleButton(CharacterAdvancement.RarityLimitsFrameProgression4)
+  CharacterAdvancement.RarityLimitsFrameProgression3:StripTextures()
+  S:HandleButton(CharacterAdvancement.RarityLimitsFrameProgression3)
+  CharacterAdvancement.RarityLimitsFrameProgression2:StripTextures()
+  S:HandleButton(CharacterAdvancement.RarityLimitsFrameProgression2)
+  ]]
+    --S:HandleButton(BuildCreator.Categories.tabLevel60)
+
+    --Scroll Bar
+    S:HandleScrollBar(CharacterAdvancement.HSKnown.Scroll.scrollBar)
+
+
+    CharacterAdvancement.SpecList:StripTextures()
+
+
+end
+
+local function HandleBuildCreator()
+    local BuildCreator = BuildCreator
+
+    BuildCreator:StripTextures(true)
+    BuildCreator:CreateBackdrop("Transparent")
+
+    -- Search
+    S:HandleEditBox(BuildCreator.SearchBox)
+
+    -- Dropdown
+    S:HandleDropDownBox(BuildCreator.RoleDropDown)
+    UIDropDownMenu_JustifyText(BuildCreator.RoleDropDown, "LEFT")
+
+    --Close button
+    S:HandleCloseButton(BuildCreatorCloseButton)
+
+    -- Categories (Level Select)
+    BuildCreator.Categories:StripTextures()
+    BuildCreator.Categories.tabFeatured:StripTextures()
+    S:HandleButton(BuildCreator.Categories.tabFeatured)
+    BuildCreator.Categories.tabLevel60:StripTextures()
+    S:HandleButton(BuildCreator.Categories.tabLevel60)
+    BuildCreator.Categories.tabLevel60PvE:StripTextures()
+    S:HandleButton(BuildCreator.Categories.tabLevel60PvE)
+    BuildCreator.Categories.tabLevel60PvP:StripTextures()
+    S:HandleButton(BuildCreator.Categories.tabLevel60PvP)
+    BuildCreator.Categories.tabLevel70:StripTextures()
+    S:HandleButton(BuildCreator.Categories.tabLevel70)
+    BuildCreator.Categories.tabLevel70PvE:StripTextures()
+    S:HandleButton(BuildCreator.Categories.tabLevel70PvE)
+    BuildCreator.Categories.tabLevel70PvP:StripTextures()
+    S:HandleButton(BuildCreator.Categories.tabLevel70PvP)
+    BuildCreator.Categories.tabFresh:StripTextures()
+    S:HandleButton(BuildCreator.Categories.tabFresh)
+    S:HandleButton(BuildCreatorLoadingStopButton)
+       
+    -- Leveling Frame (Build Select)
+    BuildCreator.PreviewLeveling:StripTextures()
+    BuildCreator.PreviewLeveling.bottomFrame:StripTextures()
+    S:HandleButton(BuildCreator.PreviewLeveling.LearnAllButton)
+    S:HandleButton(BuildCreator.PreviewLeveling.ActivateButton)
+  --  S:HandleNextPrevButton(BuildCreator.PreviewLeveling.scrollFrame.ArrowL, "left")
+  --  S:HandleNextPrevButton(BuildCreator.PreviewLeveling.scrollFrame.ArrowR, "right")
+    BuildCreator.PreviewMax:StripTextures()
+    BuildCreator.PreviewMax.bottomFrame:StripTextures()
+    S:HandleButton(BuildCreator.PreviewMax.LearnAllButton)
+    S:HandleButton(BuildCreator.PreviewMax.ActivateButton)
+--    S:HandleCloseButton(BuildCreator.PreviewMaxBackButton)
+
+    -- Mainscreen Choose Build Buttons
+    --S:HandleButton(M.ManagerButton)
+
+    -- Main Screen Scroll Bar
+    --S:HandleScrollBar(BuildCreator.LevelingFrame.BuildCreator.LevelingFrame.HSBuilds.Scroll.scrollBar)
+
+    -- Create Build Button
+    S:HandleButton(BuildCreator.EditorButton)
+
+    -- Refresh Build Button
+    S:HandleButton(BuildCreator.LevelingFrame.RefreshButton)
+
+end
+
 S:AddCallbackForAddon("AscensionUI", "AscensionUI", function()
     if not E.private.addOnSkins.AscensionUI then return end
 
@@ -231,4 +366,6 @@ S:AddCallbackForAddon("AscensionUI", "AscensionUI", function()
     HandleMysticEnchants()
     HandleSeasonCollection()
     HandleKeystoneInfo()
+    HandleCharacterAdvancement()
+    HandleBuildCreator()
 end)
