@@ -30,6 +30,7 @@ local function HandleCollections()
     end
 end
 
+-- Vanity
 local function HandleVanity()
     local V = AscensionUI.Store
     V:StripTextures(true)
@@ -48,7 +49,7 @@ local function HandleVanity()
 
     -- Dropdown
     S:HandleDropDownBox(V.StoreTypeList, 180)
-    UIDropDownMenu_JustifyText(V.StoreTypeList, "LEFT")
+    --UIDropDownMenu_JustifyText(V.StoreTypeList, "LEFT")
 
     -- Deliver Button
     S:HandleButton(V.ActivateStoreButton)
@@ -87,6 +88,7 @@ local function HandleVanity()
     V.CollectionList.TitleText:SetFont("Fonts\\FRIZQT__.TTF", 14, "OUTLINE")
 end
 
+-- Enchants
 local function HandleMysticEnchants()
     local M = AscensionUI.MysticEnchant
 
@@ -120,7 +122,7 @@ local function HandleMysticEnchants()
     end
 
     -- Enchant Frame
-    M.EnchantFrame:StripTextures()
+    M.EnchantFrame:StripTextures(true)
     M.EnchantFrame.BG:Hide()
     M.EnchantFrame:CreateBackdrop("Transparent")
     M.EnchantFrame.Icon:SetTexture("Interface\\Icons\\spell_frost_stun")
@@ -168,11 +170,11 @@ local function HandleMysticEnchants()
     end
 
     -- Enchant Presets
-    MysticEnchantingFrame.Manager:StripTextures()
+    MysticEnchantingFrame.Manager:StripTextures(true)
     MysticEnchantingFrame.Manager:CreateBackdrop("Transparent")
     --S:HandleCloseButton(MysticEnchantingFrame.ManagerClose)
     --S:HandleScrollBar(MysticEnchantingFrame.Manager.scrollScollBar)
-    MysticEnchantingFrame.Manager.PreviewPaperDoll:StripTextures()
+    MysticEnchantingFrame.Manager.PreviewPaperDoll:StripTextures(true)
     --S:HandleCloseButton(MysticEnchantingFrame.PreviewPaperDollClose)
     S:HandleButton(MysticEnchantingFrame.Manager.PreviewPaperDoll.LoadButton)
     S:HandleButton(MysticEnchantingFrame.Manager.PreviewPaperDoll.SaveButton)
@@ -182,10 +184,11 @@ local function HandleMysticEnchants()
     M.LevelFrame:Hide()
 end
 
+-- Sesonal
 local function HandleSeasonCollection()
     local Collection = AscensionUI.SeasonalCollection
 
-    Collection:StripTextures()
+    Collection:StripTextures(true)
     Collection:CreateBackdrop("Transparent")
 
     -- Spend Points Button
@@ -230,10 +233,11 @@ local function HandleSeasonCollection()
     S:HandleIcon(Collection.CosmeticReward.Icon)
 end
 
+-- Mythic Keystones
 local function HandleKeystoneInfo()
     local KeystoneInfo = AscensionUI.MythicKeystone.KeystoneInfo
 
-    KeystoneInfo:StripTextures()
+    KeystoneInfo:StripTextures(true)
     KeystoneInfo:CreateBackdrop("Transparent")
 
     --Close button
@@ -253,14 +257,22 @@ local function HandleKeystoneInfo()
 
 end
 
+-- Character Advancement
 local function HandleCharacterAdvancement()
     local CharacterAdvancement = CA2
 
     CharacterAdvancement:StripTextures(true)
     CharacterAdvancement:CreateBackdrop("Transparent")
     CharacterAdvancement.Art:StripTextures(true)
-    CharacterAdvancement.CharacterAdvancementMain.Main.BottomFrame.CurrencyAE:StripTextures()
-    CharacterAdvancement.CharacterAdvancementMain.Main.BottomFrame.CurrencyTE:StripTextures()
+    CharacterAdvancement.CharacterAdvancementMain.Main.BottomFrame:StripTextures(true)
+    CharacterAdvancement.CharacterAdvancementMain.Main.BottomFrame.CurrencyAE:StripTextures(true)
+    CharacterAdvancement.CharacterAdvancementMain.Main.BottomFrame.CurrencyAE.BG_Left:StripTextures(true)
+    CharacterAdvancement.CharacterAdvancementMain.Main.BottomFrame.CurrencyAE.BG_Middle:StripTextures(true)
+    CharacterAdvancement.CharacterAdvancementMain.Main.BottomFrame.CurrencyAE.BG_Right:StripTextures(true)
+    CharacterAdvancement.CharacterAdvancementMain.Main.BottomFrame.CurrencyTE:StripTextures(true)
+    CharacterAdvancement.CharacterAdvancementMain.Main.BottomFrame.CurrencyTE.BG_Left:StripTextures(true)
+    CharacterAdvancement.CharacterAdvancementMain.Main.BottomFrame.CurrencyTE.BG_Middle:StripTextures(true)
+    CharacterAdvancement.CharacterAdvancementMain.Main.BottomFrame.CurrencyTE.BG_Right:StripTextures(true)
 
     -- Reset All Abilities Button
     S:HandleButton(CharacterAdvancement.CharacterAdvancementMain.Main.BottomFrame.ResetSpellsButton)
@@ -274,27 +286,61 @@ local function HandleCharacterAdvancement()
     --Close button
     S:HandleCloseButton(CharacterAdvancement.CloseButton)
 
-  --  CharacterAdvancement.CA2.HSKnown.Content:StripTextures()
-  CharacterAdvancement.RarityLimitsFrame:StripTextures()
-  --[[S:HandleButton(CharacterAdvancement.RarityLimitsFrameProgression5)
-  CharacterAdvancement.RarityLimitsFrameProgression4:StripTextures()
-  S:HandleButton(CharacterAdvancement.RarityLimitsFrameProgression4)
-  CharacterAdvancement.RarityLimitsFrameProgression3:StripTextures()
-  S:HandleButton(CharacterAdvancement.RarityLimitsFrameProgression3)
-  CharacterAdvancement.RarityLimitsFrameProgression2:StripTextures()
-  S:HandleButton(CharacterAdvancement.RarityLimitsFrameProgression2)
-  ]]
-    --S:HandleButton(BuildCreator.Categories.tabLevel60)
-
-    --Scroll Bar
+    --Scroll Bars
     S:HandleScrollBar(CharacterAdvancement.HSKnown.Scroll.scrollBar)
+    --S:HandleScrollBar(CA2.Scroll_SpecList.ScrollBar)
 
+    -- Class Tabs
+    --[[for i = 1, 3 do
+        local classtab = _G["CharacterAdvancement.CharacterAdvancementMain.Main.Tree"..i]
+        --classtab.tab:StripTextures(true)
+    --S:HandleTab(classtab.tab)
+    end
+    ]]--
 
-    CharacterAdvancement.SpecList:StripTextures()
+    --CharacterAdvancement.CharacterAdvancementMain.Main.Tree
+    S:HandleTab(CharacterAdvancement.CharacterAdvancementMain.Main.Tree1.tab)
+    S:HandleTab(CharacterAdvancement.CharacterAdvancementMain.Main.Tree2.tab)
+    S:HandleTab(CharacterAdvancement.CharacterAdvancementMain.Main.Tree3.tab)
 
+    -- My Build and My Specs Tabs
+    CharacterAdvancement.HeaderTabs:StripTextures(true)
+    S:HandleTab(CharacterAdvancement.HeaderTabs.Tab1)
+    S:HandleTab(CharacterAdvancement.HeaderTabs.Tab3)
+    --CharacterAdvancement.HeaderTabsTab:StripTextures(true)
+
+    -- Rarity Limits
+    CharacterAdvancement.RarityLimitsFrame:StripTextures(true)
+    CharacterAdvancement.RarityLimitsFrame:CreateBackdrop("Transparent")
+        -- Rarity limits
+        for i = 2, 5 do
+            local Rarity = _G["CA2.RarityLimitsFrameProgression"..i]
+            --Rarity:StripTextures(true)
+            --S:HandleButton(Rarity)
+        end
+
+    -- Specializations (My Specs Section)
+    CharacterAdvancement.SpecList:StripTextures(true)
+        -- Top Button
+        CA2.SpecList.SpecButton1:StripTextures(true)
+        S:HandleButton(CA2.SpecList.SpecButton1)
+        CA2.SpecList.SpecButton1:SetSize(225,45)
+        CA2.SpecList.SpecButton1.Text:FontTemplate(nil, 14)
+        -- The rest
+        for i = 2, 13 do
+            local specs = _G["CA2.SpecList.SpecButton"..i]
+            specs:StripTextures(true)
+            S:HandleButton(specs)
+            specs.Text:FontTemplate(nil, 12)
+            specs:SetSize(225,48)
+            --specs.SpecIcon:SetSize(22,22)
+            specs.SpecIcon:SetPoint("LEFT", 7, 1)
+        end
+  --  CharacterAdvancement.CA2.HSKnown.Content:StripTextures(true)
 
 end
 
+-- Heroic Architect
 local function HandleBuildCreator()
     local BuildCreator = BuildCreator
 
@@ -311,35 +357,28 @@ local function HandleBuildCreator()
     --Close button
     S:HandleCloseButton(BuildCreatorCloseButton)
 
-    -- Categories (Level Select)
-    BuildCreator.Categories:StripTextures()
-    BuildCreator.Categories.tabFeatured:StripTextures()
+    --Categories (Level Select)
+    BuildCreator.Categories:StripTextures(true)
+    BuildCreator.Categories.tabFeatured:StripTextures(true)
     S:HandleButton(BuildCreator.Categories.tabFeatured)
-    BuildCreator.Categories.tabLevel60:StripTextures()
     S:HandleButton(BuildCreator.Categories.tabLevel60)
-    BuildCreator.Categories.tabLevel60PvE:StripTextures()
     S:HandleButton(BuildCreator.Categories.tabLevel60PvE)
-    BuildCreator.Categories.tabLevel60PvP:StripTextures()
     S:HandleButton(BuildCreator.Categories.tabLevel60PvP)
-    BuildCreator.Categories.tabLevel70:StripTextures()
     S:HandleButton(BuildCreator.Categories.tabLevel70)
-    BuildCreator.Categories.tabLevel70PvE:StripTextures()
     S:HandleButton(BuildCreator.Categories.tabLevel70PvE)
-    BuildCreator.Categories.tabLevel70PvP:StripTextures()
     S:HandleButton(BuildCreator.Categories.tabLevel70PvP)
-    BuildCreator.Categories.tabFresh:StripTextures()
     S:HandleButton(BuildCreator.Categories.tabFresh)
     S:HandleButton(BuildCreatorLoadingStopButton)
        
     -- Leveling Frame (Build Select)
-    BuildCreator.PreviewLeveling:StripTextures()
-    BuildCreator.PreviewLeveling.bottomFrame:StripTextures()
+    BuildCreator.PreviewLeveling:StripTextures(true)
+    BuildCreator.PreviewLeveling.bottomFrame:StripTextures(true)
     S:HandleButton(BuildCreator.PreviewLeveling.LearnAllButton)
     S:HandleButton(BuildCreator.PreviewLeveling.ActivateButton)
   --  S:HandleNextPrevButton(BuildCreator.PreviewLeveling.scrollFrame.ArrowL, "left")
   --  S:HandleNextPrevButton(BuildCreator.PreviewLeveling.scrollFrame.ArrowR, "right")
-    BuildCreator.PreviewMax:StripTextures()
-    BuildCreator.PreviewMax.bottomFrame:StripTextures()
+    BuildCreator.PreviewMax:StripTextures(true)
+    BuildCreator.PreviewMax.bottomFrame:StripTextures(true)
     S:HandleButton(BuildCreator.PreviewMax.LearnAllButton)
     S:HandleButton(BuildCreator.PreviewMax.ActivateButton)
 --    S:HandleCloseButton(BuildCreator.PreviewMaxBackButton)
