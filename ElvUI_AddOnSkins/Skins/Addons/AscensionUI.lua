@@ -263,16 +263,45 @@ local function HandleCharacterAdvancement()
 
     CharacterAdvancement:StripTextures(true)
     CharacterAdvancement:CreateBackdrop("Transparent")
+    CharacterAdvancement.TitleText:FontTemplate(nil,12)
     CharacterAdvancement.Art:StripTextures(true)
     CharacterAdvancement.CharacterAdvancementMain.Main.BottomFrame:StripTextures(true)
+
+    -- Classes Buttons
+    for i = 1, 10 do
+        local button = _G["CA2.CharacterAdvancementMain.ClassButton"..i]
+
+        -- Class Name
+        _G[button:GetName().."Text"]:FontTemplate(nil,12)
+
+        --[[ Total Spells
+        button.TotalSpellsFrame = CreateFrame("Button", "CA2CharacterAdvancementMainClassButton"..i.."TotalSpellsFrame", button)
+        button.TotalSpellsFrame.Total:StripTextures(true)
+        button.TotalSpellsFrame.Total:FontTemplate(nil,12)
+        ]]--
+    end
+
+    -- Ability Essence
     CharacterAdvancement.CharacterAdvancementMain.Main.BottomFrame.CurrencyAE:StripTextures(true)
-    CharacterAdvancement.CharacterAdvancementMain.Main.BottomFrame.CurrencyAE.BG_Left:StripTextures(true)
-    CharacterAdvancement.CharacterAdvancementMain.Main.BottomFrame.CurrencyAE.BG_Middle:StripTextures(true)
-    CharacterAdvancement.CharacterAdvancementMain.Main.BottomFrame.CurrencyAE.BG_Right:StripTextures(true)
+    CharacterAdvancement.CharacterAdvancementMain.Main.BottomFrame.CurrencyAE.AEButton.Text:FontTemplate(nil, 10)
+    --[[ I thought that this would get rid of the little grey objects down the bottom... guess not
+        CA2.CharacterAdvancementMain.Main.BottomFrame.CurrencyAE.BG_Left:StripTextures(true)
+        CA2.CharacterAdvancementMain.Main.BottomFrame.CurrencyAE.BG_Middle:StripTextures(true)
+        CA2.CharacterAdvancementMain.Main.BottomFrame.CurrencyAE.BG_Right:StripTextures(true)
+    --]]
+
+    -- Talent Essence
     CharacterAdvancement.CharacterAdvancementMain.Main.BottomFrame.CurrencyTE:StripTextures(true)
-    CharacterAdvancement.CharacterAdvancementMain.Main.BottomFrame.CurrencyTE.BG_Left:StripTextures(true)
-    CharacterAdvancement.CharacterAdvancementMain.Main.BottomFrame.CurrencyTE.BG_Middle:StripTextures(true)
-    CharacterAdvancement.CharacterAdvancementMain.Main.BottomFrame.CurrencyTE.BG_Right:StripTextures(true)
+    CharacterAdvancement.CharacterAdvancementMain.Main.BottomFrame.CurrencyTE.TEButton.Text:FontTemplate(nil, 10)
+
+    -- Scroll of Unlearning
+    CharacterAdvancement.Currency.ScrollButton.Text:FontTemplate(nil, 10)
+    
+    --[[
+        CA2.CharacterAdvancementMain.Main.BottomFrame.CurrencyTE.BG_Left:StripTextures(true)
+        CA2.CharacterAdvancementMain.Main.BottomFrame.CurrencyTE.BG_Middle:StripTextures(true)
+        CA2.CharacterAdvancementMain.Main.BottomFrame.CurrencyTE.BG_Right:StripTextures(true)
+    ]]--
 
     -- Reset All Abilities Button
     S:HandleButton(CharacterAdvancement.CharacterAdvancementMain.Main.BottomFrame.ResetSpellsButton)
@@ -299,14 +328,43 @@ local function HandleCharacterAdvancement()
     ]]--
 
     --CharacterAdvancement.CharacterAdvancementMain.Main.Tree
-    S:HandleTab(CharacterAdvancement.CharacterAdvancementMain.Main.Tree1.tab)
-    S:HandleTab(CharacterAdvancement.CharacterAdvancementMain.Main.Tree2.tab)
-    S:HandleTab(CharacterAdvancement.CharacterAdvancementMain.Main.Tree3.tab)
+    S:HandleTab(CharacterAdvancement.CharacterAdvancementMain.Main.Tree1.Tab)
+    CharacterAdvancement.CharacterAdvancementMain.Main.Tree1.Tab:SetSize(100,30)
+    CharacterAdvancement.CharacterAdvancementMain.Main.Tree1.Tab:StripTextures(true)
+    CharacterAdvancement.CharacterAdvancementMain.Main.Tree1.Tab:SetPoint("TOPLEFT", 0, -15)
+    CharacterAdvancement.CharacterAdvancementMain.Main.Tree1.Tab:SetNormalTexture(nil)
+    CharacterAdvancement.CharacterAdvancementMain.Main.Tree1.Tab:SetHighlightTexture(nil)
+    CharacterAdvancement.CharacterAdvancementMain.Main.Tree1.Tab:SetCheckedTexture(nil)
+    S:HandleTab(CharacterAdvancement.CharacterAdvancementMain.Main.Tree2.Tab)
+    CharacterAdvancement.CharacterAdvancementMain.Main.Tree2.Tab:SetSize(100,30)
+    CharacterAdvancement.CharacterAdvancementMain.Main.Tree2.Tab:StripTextures(true)
+    CharacterAdvancement.CharacterAdvancementMain.Main.Tree2.Tab:SetNormalTexture(nil)
+    CharacterAdvancement.CharacterAdvancementMain.Main.Tree2.Tab:SetHighlightTexture(nil)
+    CharacterAdvancement.CharacterAdvancementMain.Main.Tree2.Tab:SetCheckedTexture(nil)
+    --CharacterAdvancement.CharacterAdvancementMain.Main.Tree1.Tab:SetPoint("LEFT", CA2.CharacterAdvancementMain.Main.Tree1.Tab, "RIGHT", -16, 0)
+    S:HandleTab(CharacterAdvancement.CharacterAdvancementMain.Main.Tree3.Tab)
+    CharacterAdvancement.CharacterAdvancementMain.Main.Tree3.Tab:SetSize(100,30)
+    CharacterAdvancement.CharacterAdvancementMain.Main.Tree3.Tab:StripTextures(true)
+    CharacterAdvancement.CharacterAdvancementMain.Main.Tree3.Tab:SetNormalTexture(nil)
+    CharacterAdvancement.CharacterAdvancementMain.Main.Tree3.Tab:SetHighlightTexture(nil)
+    CharacterAdvancement.CharacterAdvancementMain.Main.Tree3.Tab:SetCheckedTexture(nil)
+    --CharacterAdvancement.CharacterAdvancementMain.Main.Tree1.Tab:SetPoint("LEFT", CA2.CharacterAdvancementMain.Main.Tree2.Tab, "RIGHT", -16, 0)
+
+    -- Abilities Sections
+    CharacterAdvancement.CharacterAdvancementMain.Main.SpellsText:FontTemplate(nil, 24)
+    CharacterAdvancement.CharacterAdvancementMain.Main.SpellsSubText:FontTemplate(nil, 12)
+
+    -- Talents Section
+    CharacterAdvancement.CharacterAdvancementMain.Main.TalentsText:FontTemplate(nil, 24)
+    CharacterAdvancement.CharacterAdvancementMain.Main.TalentsSubText:FontTemplate(nil, 12)
+
 
     -- My Build and My Specs Tabs
     CharacterAdvancement.HeaderTabs:StripTextures(true)
     S:HandleTab(CharacterAdvancement.HeaderTabs.Tab1)
+    CharacterAdvancement.HeaderTabs.Tab1:SetSize(60,30)
     S:HandleTab(CharacterAdvancement.HeaderTabs.Tab3)
+    CharacterAdvancement.HeaderTabs.Tab3:SetSize(60,30)
     --CharacterAdvancement.HeaderTabsTab:StripTextures(true)
 
     -- Rarity Limits
