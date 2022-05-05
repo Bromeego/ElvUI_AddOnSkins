@@ -35,6 +35,7 @@ local function HandleVanity()
     local V = AscensionUI.Store
     V:StripTextures(true)
     V:CreateBackdrop("Transparent")
+    V.TitleText:FontTemplate(nil,12)
 
     -- Model Preview Frame
     V.ModelPreview.BGTex:Hide()
@@ -48,7 +49,7 @@ local function HandleVanity()
     S:HandleEditBox(V.SearchBox)
 
     -- Dropdown
-    S:HandleDropDownBox(V.StoreTypeList, 180)
+    --S:HandleDropDownBox(V.StoreTypeList, 180)
     --UIDropDownMenu_JustifyText(V.StoreTypeList, "LEFT")
 
     -- Deliver Button
@@ -95,6 +96,7 @@ local function HandleMysticEnchants()
     -- Main UI
     M:StripTextures(true)
     M:CreateBackdrop("Transparent")
+    M.TitleText:FontTemplate(nil,12)
 
     -- Control Frame
     S:HandleButton(M.ControlFrame.RollButton)
@@ -190,6 +192,7 @@ local function HandleSeasonCollection()
 
     Collection:StripTextures(true)
     Collection:CreateBackdrop("Transparent")
+    Collection.TitleText:FontTemplate(nil,12)
 
     -- Spend Points Button
     S:HandleButton(Collection.SpendPoints.MainButton)
@@ -239,7 +242,8 @@ local function HandleKeystoneInfo()
 
     KeystoneInfo:StripTextures(true)
     KeystoneInfo:CreateBackdrop("Transparent")
-
+    KeystoneInfo.TitleText:FontTemplate(nil,12)
+    
     --Close button
     S:HandleCloseButton(KeystoneInfo.CloseButton)
 
@@ -248,12 +252,24 @@ local function HandleKeystoneInfo()
 
     --Next Button
     S:HandleNextPrevButton(KeystoneInfo.LeftFramPrevButton, "right")
-]]
-     -- Dropdown
-     S:HandleDropDownBox(KeystoneInfo.DungeonsDropDown)
-     UIDropDownMenu_JustifyText(KeystoneInfo.DungeonsDropDown, "LEFT")
+    ]]
+    -- Dropdown
+    S:HandleDropDownBox(KeystoneInfo.DungeonsDropDown, 190)
+    --UIDropDownMenu_JustifyText(KeystoneInfo.DungeonsDropDown, "LEFT")
+    --KeystoneInfo.DungeonsDropDown:SetSize(100,200)
+    --KeystoneInfo.DungeonsDropDown:SetPoint("TOPRIGHT", KeystoneInfo, 1,-32)
 
- --    KeystoneInfo.Rightscroll.Content:StripTextures(true)
+    -- Scrollbar WHAT IS THIS CALLED???
+    --S:HandleScrollBar(KeystoneInfo.RightScroll.scrollBar)
+
+    --[[ Key buttons
+    for i = 1, 8 do
+        button = _G["AscensionUI.MythicKeystone.KeystoneInfo.RightScroll.Content.Button"..i]
+        button:StripTextures(true)
+    end
+    ]]
+
+
 
 end
 
@@ -274,35 +290,38 @@ local function HandleCharacterAdvancement()
         -- Class Name
         _G[button:GetName().."Text"]:FontTemplate(nil,12)
 
-        --[[ Total Spells
-        button.TotalSpellsFrame = CreateFrame("Button", "CA2CharacterAdvancementMainClassButton"..i.."TotalSpellsFrame", button)
-        button.TotalSpellsFrame.Total:StripTextures(true)
-        button.TotalSpellsFrame.Total:FontTemplate(nil,12)
-        ]]--
+        --[[ Class Icon -- Currently they have circle icons and it looks bad. I will leave there here
+        button.Border:StripTextures(true)
+        button.BGIcon:SetSize(44.1,44.1)
+        button.Highlight_Add:StripTextures(true)
+        button.Highlight:StripTextures(true)
+        ]]
+
+        -- Talent numbers
+        button.TotalTalentsFrame:StripTextures(true)
+        button.TotalTalentsFrame:CreateBackdrop("Default")
+        button.TotalTalentsFrame:SetSize(20,20)
+        -- Spell Numbers
+        button.TotalSpellsFrame:StripTextures(true)
+        button.TotalSpellsFrame:CreateBackdrop("Default")
+        button.TotalSpellsFrame:SetSize(20,20)
+
+        
     end
 
     -- Ability Essence
     CharacterAdvancement.CharacterAdvancementMain.Main.BottomFrame.CurrencyAE:StripTextures(true)
+    CharacterAdvancement.CharacterAdvancementMain.Main.BottomFrame.CurrencyAE:CreateBackdrop("Transparent")
     CharacterAdvancement.CharacterAdvancementMain.Main.BottomFrame.CurrencyAE.AEButton.Text:FontTemplate(nil, 10)
-    --[[ I thought that this would get rid of the little grey objects down the bottom... guess not
-        CA2.CharacterAdvancementMain.Main.BottomFrame.CurrencyAE.BG_Left:StripTextures(true)
-        CA2.CharacterAdvancementMain.Main.BottomFrame.CurrencyAE.BG_Middle:StripTextures(true)
-        CA2.CharacterAdvancementMain.Main.BottomFrame.CurrencyAE.BG_Right:StripTextures(true)
-    --]]
 
     -- Talent Essence
     CharacterAdvancement.CharacterAdvancementMain.Main.BottomFrame.CurrencyTE:StripTextures(true)
+    CharacterAdvancement.CharacterAdvancementMain.Main.BottomFrame.CurrencyTE:CreateBackdrop("Transparent")
     CharacterAdvancement.CharacterAdvancementMain.Main.BottomFrame.CurrencyTE.TEButton.Text:FontTemplate(nil, 10)
 
     -- Scroll of Unlearning
     CharacterAdvancement.Currency.ScrollButton.Text:FontTemplate(nil, 10)
     
-    --[[
-        CA2.CharacterAdvancementMain.Main.BottomFrame.CurrencyTE.BG_Left:StripTextures(true)
-        CA2.CharacterAdvancementMain.Main.BottomFrame.CurrencyTE.BG_Middle:StripTextures(true)
-        CA2.CharacterAdvancementMain.Main.BottomFrame.CurrencyTE.BG_Right:StripTextures(true)
-    ]]--
-
     -- Reset All Abilities Button
     S:HandleButton(CharacterAdvancement.CharacterAdvancementMain.Main.BottomFrame.ResetSpellsButton)
 
@@ -319,15 +338,8 @@ local function HandleCharacterAdvancement()
     S:HandleScrollBar(CharacterAdvancement.HSKnown.Scroll.scrollBar)
     --S:HandleScrollBar(CA2.Scroll_SpecList.ScrollBar)
 
-    -- Class Tabs
-    --[[for i = 1, 3 do
-        local classtab = _G["CharacterAdvancement.CharacterAdvancementMain.Main.Tree"..i]
-        --classtab.tab:StripTextures(true)
-    --S:HandleTab(classtab.tab)
-    end
-    ]]--
-
-    --CharacterAdvancement.CharacterAdvancementMain.Main.Tree
+    -- Class Talent Tabs
+        -- Tab 1
     S:HandleTab(CharacterAdvancement.CharacterAdvancementMain.Main.Tree1.Tab)
     CharacterAdvancement.CharacterAdvancementMain.Main.Tree1.Tab:SetSize(100,30)
     CharacterAdvancement.CharacterAdvancementMain.Main.Tree1.Tab:StripTextures(true)
@@ -335,28 +347,45 @@ local function HandleCharacterAdvancement()
     CharacterAdvancement.CharacterAdvancementMain.Main.Tree1.Tab:SetNormalTexture(nil)
     CharacterAdvancement.CharacterAdvancementMain.Main.Tree1.Tab:SetHighlightTexture(nil)
     CharacterAdvancement.CharacterAdvancementMain.Main.Tree1.Tab:SetCheckedTexture(nil)
+            -- Total Spells
+        CharacterAdvancement.CharacterAdvancementMain.Main.Tree1.Tab.TotalSpellsFrame:StripTextures(true)
+        CharacterAdvancement.CharacterAdvancementMain.Main.Tree1.Tab.TotalSpellsFrame:CreateBackdrop("Default")
+        CharacterAdvancement.CharacterAdvancementMain.Main.Tree1.Tab.TotalSpellsFrame:SetSize(20, 20)
+        CharacterAdvancement.CharacterAdvancementMain.Main.Tree1.Tab.TotalSpellsFrame:SetPoint("LEFT",CA2.CharacterAdvancementMain.Main.Tree1.Tab, "RIGHT", -24, 6)
+    -- Tab 2
     S:HandleTab(CharacterAdvancement.CharacterAdvancementMain.Main.Tree2.Tab)
     CharacterAdvancement.CharacterAdvancementMain.Main.Tree2.Tab:SetSize(100,30)
     CharacterAdvancement.CharacterAdvancementMain.Main.Tree2.Tab:StripTextures(true)
     CharacterAdvancement.CharacterAdvancementMain.Main.Tree2.Tab:SetNormalTexture(nil)
     CharacterAdvancement.CharacterAdvancementMain.Main.Tree2.Tab:SetHighlightTexture(nil)
     CharacterAdvancement.CharacterAdvancementMain.Main.Tree2.Tab:SetCheckedTexture(nil)
-    --CharacterAdvancement.CharacterAdvancementMain.Main.Tree1.Tab:SetPoint("LEFT", CA2.CharacterAdvancementMain.Main.Tree1.Tab, "RIGHT", -16, 0)
+        -- Total Spells
+        CharacterAdvancement.CharacterAdvancementMain.Main.Tree2.Tab.TotalSpellsFrame:StripTextures(true)
+        CharacterAdvancement.CharacterAdvancementMain.Main.Tree2.Tab.TotalSpellsFrame:CreateBackdrop("Default")
+        CharacterAdvancement.CharacterAdvancementMain.Main.Tree2.Tab.TotalSpellsFrame:SetSize(20, 20)
+        CharacterAdvancement.CharacterAdvancementMain.Main.Tree2.Tab.TotalSpellsFrame:SetPoint("LEFT",CA2.CharacterAdvancementMain.Main.Tree2.Tab, "RIGHT", -24, 6)
+    -- Tab 3
     S:HandleTab(CharacterAdvancement.CharacterAdvancementMain.Main.Tree3.Tab)
     CharacterAdvancement.CharacterAdvancementMain.Main.Tree3.Tab:SetSize(100,30)
     CharacterAdvancement.CharacterAdvancementMain.Main.Tree3.Tab:StripTextures(true)
     CharacterAdvancement.CharacterAdvancementMain.Main.Tree3.Tab:SetNormalTexture(nil)
     CharacterAdvancement.CharacterAdvancementMain.Main.Tree3.Tab:SetHighlightTexture(nil)
     CharacterAdvancement.CharacterAdvancementMain.Main.Tree3.Tab:SetCheckedTexture(nil)
-    --CharacterAdvancement.CharacterAdvancementMain.Main.Tree1.Tab:SetPoint("LEFT", CA2.CharacterAdvancementMain.Main.Tree2.Tab, "RIGHT", -16, 0)
+        -- Total Spells
+        CharacterAdvancement.CharacterAdvancementMain.Main.Tree3.Tab.TotalSpellsFrame:StripTextures(true)
+        CharacterAdvancement.CharacterAdvancementMain.Main.Tree3.Tab.TotalSpellsFrame:CreateBackdrop("Default")
+        CharacterAdvancement.CharacterAdvancementMain.Main.Tree3.Tab.TotalSpellsFrame:SetSize(20, 20)
+        CharacterAdvancement.CharacterAdvancementMain.Main.Tree3.Tab.TotalSpellsFrame:SetPoint("LEFT",CA2.CharacterAdvancementMain.Main.Tree3.Tab, "RIGHT", -24, 6)
 
     -- Abilities Sections
-    CharacterAdvancement.CharacterAdvancementMain.Main.SpellsText:FontTemplate(nil, 24)
-    CharacterAdvancement.CharacterAdvancementMain.Main.SpellsSubText:FontTemplate(nil, 12)
+        -- Title
+        CharacterAdvancement.CharacterAdvancementMain.Main.SpellsText:FontTemplate(nil, 24)
+        CharacterAdvancement.CharacterAdvancementMain.Main.SpellsSubText:FontTemplate(nil, 12)
 
     -- Talents Section
-    CharacterAdvancement.CharacterAdvancementMain.Main.TalentsText:FontTemplate(nil, 24)
-    CharacterAdvancement.CharacterAdvancementMain.Main.TalentsSubText:FontTemplate(nil, 12)
+        -- Title
+        CharacterAdvancement.CharacterAdvancementMain.Main.TalentsText:FontTemplate(nil, 24)
+        CharacterAdvancement.CharacterAdvancementMain.Main.TalentsSubText:FontTemplate(nil, 12)
 
 
     -- My Build and My Specs Tabs
@@ -395,6 +424,18 @@ local function HandleCharacterAdvancement()
             specs.SpecIcon:SetPoint("LEFT", 7, 1)
         end
   --  CharacterAdvancement.CA2.HSKnown.Content:StripTextures(true)
+  --CharacterAdvancement.CA2.HSKnown.Content.Text:FontTemplate(nil, 12)
+
+  for i = 1, 11 do
+    local knownspell = _G["CA2.CA2.HSKnown.Content.SpellButton"..i]
+    local buttonName = knownspell:GetName()
+
+    knownspell.SpellName:FontTemplate(nil, 12)
+    knownspell.BG:StripTextures(true)
+    --knownspell.BG:CreateBackdrop("Transparent")
+    knownspell.BG:SetSize(256,64)
+
+  end
 
 end
 
@@ -404,6 +445,7 @@ local function HandleBuildCreator()
 
     BuildCreator:StripTextures(true)
     BuildCreator:CreateBackdrop("Transparent")
+    BuildCreator.TitleText:FontTemplate(nil,12)
 
     -- Search
     S:HandleEditBox(BuildCreator.SearchBox)
