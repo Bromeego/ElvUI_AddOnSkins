@@ -172,15 +172,39 @@ local function HandleMysticEnchants()
     end
 
     -- Enchant Presets
-    MysticEnchantingFrame.Manager:StripTextures(true)
-    MysticEnchantingFrame.Manager:CreateBackdrop("Transparent")
+    M.Manager:StripTextures(true)
+    M.Manager:CreateBackdrop("Transparent")
     --S:HandleCloseButton(MysticEnchantingFrame.ManagerClose)
-    --S:HandleScrollBar(MysticEnchantingFrame.Manager.scrollScollBar)
-    MysticEnchantingFrame.Manager.PreviewPaperDoll:StripTextures(true)
+    --S:HandleScrollBar(M.Manager.scroll.ScrollBar)
+    M.Manager.PreviewPaperDoll:StripTextures(true)
+    M.Manager.PreviewPaperDoll::CreateBackdrop("Transparent")
     --S:HandleCloseButton(MysticEnchantingFrame.PreviewPaperDollClose)
-    S:HandleButton(MysticEnchantingFrame.Manager.PreviewPaperDoll.LoadButton)
-    S:HandleButton(MysticEnchantingFrame.Manager.PreviewPaperDoll.SaveButton)
+    S:HandleButton(M.Manager.PreviewPaperDoll.LoadButton)
+    S:HandleButton(M.Manager.PreviewPaperDoll.SaveButton)
+    S:HandleButton(M.ManagerButton)
 
+    for i = 1, 100 do
+        local btn = _G["MysticEnchantingFrame.Manager.contentFrame.button"..i]
+        --btn.Border:CreateBackdrop("Default")
+        --btn.Border:StripTextures(true)
+        btn.Border:SetSize(256,48)
+        --specs:SetSize(225,48)
+        
+        btn.Text:FontTemplate(nil,12)
+        btn.Text_Add:FontTemplate(nil,12)
+
+    end
+
+    -- Enchant Limits
+    M.EnchantLimits.Legendary:StripTextures(true)
+    M.EnchantLimits.Epic:StripTextures(true)
+
+    -- Mystic Orb (currency) Frames
+    M.CollectionsList.CurrencyOrbs.OrbText:FontTemplate(nil,12)
+    M.CollectionsList.CurrencyOrbs:StripTextures(true)
+    M.CollectionsList.CurrencyOrbs:CreateBackdrop("Transparent")
+    M.ControlFrame.Currency:StripTextures(true)
+    M.ControlFrame.Currency:CreateBackdrop("Transparent")
 
     -- Level Frame
     M.LevelFrame:Hide()
