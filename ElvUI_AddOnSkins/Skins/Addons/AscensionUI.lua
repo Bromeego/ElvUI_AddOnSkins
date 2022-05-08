@@ -500,25 +500,56 @@ local function HandleBuildCreator()
 
     --Categories (Level Select)
     BuildCreator.Categories:StripTextures(true)
-    BuildCreator.Categories.tabFeatured:StripTextures(true)
+
+    S:HandleButton(BuildCreator.Categories.tabActive)
+    BuildCreator.Categories.tabActive:StripTextures(true)
+    BuildCreator.Categories.tabActive:CreateBackdrop("Default")
+
     S:HandleButton(BuildCreator.Categories.tabFeatured)
+    BuildCreator.Categories.tabFeatured:StripTextures(true)
+    BuildCreator.Categories.tabFeatured:CreateBackdrop("Default")
+
     S:HandleButton(BuildCreator.Categories.tabLevel60)
+    BuildCreator.Categories.tabLevel60:StripTextures(true)
+    BuildCreator.Categories.tabLevel60:CreateBackdrop("Default")
+
     S:HandleButton(BuildCreator.Categories.tabLevel60PvE)
+    BuildCreator.Categories.tabLevel60PvE:StripTextures(true)
+    BuildCreator.Categories.tabLevel60PvE:CreateBackdrop("Default")
+
     S:HandleButton(BuildCreator.Categories.tabLevel60PvP)
+    BuildCreator.Categories.tabLevel60PvP:StripTextures(true)
+    BuildCreator.Categories.tabLevel60PvP:CreateBackdrop("Default")
+
     S:HandleButton(BuildCreator.Categories.tabLevel70)
+    BuildCreator.Categories.tabLevel70:StripTextures(true)
+    BuildCreator.Categories.tabLevel70:CreateBackdrop("Default")
+
     S:HandleButton(BuildCreator.Categories.tabLevel70PvE)
+    BuildCreator.Categories.tabLevel70PvE:StripTextures(true)
+    BuildCreator.Categories.tabLevel70PvE:CreateBackdrop("Default")
+
     S:HandleButton(BuildCreator.Categories.tabLevel70PvP)
+    BuildCreator.Categories.tabLevel70PvP:StripTextures(true)
+    BuildCreator.Categories.tabLevel70PvP:CreateBackdrop("Default")
+
     S:HandleButton(BuildCreator.Categories.tabFresh)
+    BuildCreator.Categories.tabFresh:StripTextures(true)
+    BuildCreator.Categories.tabFresh:CreateBackdrop("Default")
+
+    -- Cancel Button - Build Load
     S:HandleButton(BuildCreatorLoadingStopButton)
        
     -- Leveling Frame (Build Select)
     BuildCreator.PreviewLeveling:StripTextures(true)
+    BuildCreator.PreviewLeveling:CreateBackdrop("Default")
     BuildCreator.PreviewLeveling.bottomFrame:StripTextures(true)
     S:HandleButton(BuildCreator.PreviewLeveling.LearnAllButton)
     S:HandleButton(BuildCreator.PreviewLeveling.ActivateButton)
   --  S:HandleNextPrevButton(BuildCreator.PreviewLeveling.scrollFrame.ArrowL, "left")
   --  S:HandleNextPrevButton(BuildCreator.PreviewLeveling.scrollFrame.ArrowR, "right")
-    BuildCreator.PreviewMax:StripTextures(true)
+  BuildCreator.PreviewMax:StripTextures(true)
+  BuildCreator.PreviewMax:CreateBackdrop("Default")
     BuildCreator.PreviewMax.bottomFrame:StripTextures(true)
     S:HandleButton(BuildCreator.PreviewMax.LearnAllButton)
     S:HandleButton(BuildCreator.PreviewMax.ActivateButton)
