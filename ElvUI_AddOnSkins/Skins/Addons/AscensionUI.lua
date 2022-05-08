@@ -420,15 +420,7 @@ local function HandleCharacterAdvancement()
     CharacterAdvancement.HeaderTabs.Tab3:SetSize(60,30)
     --CharacterAdvancement.HeaderTabsTab:StripTextures(true)
 
-    -- Rarity Limits
-    CharacterAdvancement.RarityLimitsFrame:StripTextures(true)
-    CharacterAdvancement.RarityLimitsFrame:CreateBackdrop("Transparent")
-        -- Rarity limits
-        for i = 2, 5 do
-            local Rarity = _G["CA2.RarityLimitsFrameProgression"..i]
-            --Rarity:StripTextures(true)
-            --S:HandleButton(Rarity)
-        end
+
 
     -- Specializations (My Specs Section)
     CharacterAdvancement.SpecList:StripTextures(true)
@@ -447,18 +439,43 @@ local function HandleCharacterAdvancement()
             --specs.SpecIcon:SetSize(22,22)
             specs.SpecIcon:SetPoint("LEFT", 7, 1)
         end
-  --  CharacterAdvancement.CA2.HSKnown.Content:StripTextures(true)
-  --CharacterAdvancement.CA2.HSKnown.Content.Text:FontTemplate(nil, 12)
 
-  for i = 1, 11 do
-    local knownspell = _G["CA2.CA2.HSKnown.Content.SpellButton"..i]
-    local buttonName = knownspell:GetName()
+    -- Known Spells
+        --League Realm is differnet due to having Rarity Limits
+  if C_Player:IsLeagueRealm() then
+        for i = 1, 9 do
+            local knownspell = _G["CA2.CA2.HSKnown.Content.SpellButton"..i]
+            local buttonName = knownspell:GetName()
+        
+            knownspell.SpellName:FontTemplate(nil, 12)
+            knownspell.BG:StripTextures(true)
+            --knownspell.BG:CreateBackdrop("Transparent")
+            knownspell.BG:SetSize(256,64)
 
-    knownspell.SpellName:FontTemplate(nil, 12)
-    knownspell.BG:StripTextures(true)
-    --knownspell.BG:CreateBackdrop("Transparent")
-    knownspell.BG:SetSize(256,64)
-
+            -- Rarity Limits
+            CA2.RarityLimitsFrame:StripTextures(true)
+            CA2.RarityLimitsFrame.FakeBorder:StripTextures(true)
+            CA2.RarityLimitsFrame.FakeScroll:StripTextures(true)
+            
+            CA2.RarityLimitsFrame.Legendary:StripTextures(true)
+            CA2.RarityLimitsFrame.Legendary:CreateBackdrop("Transparent")
+            CA2.RarityLimitsFrame.Epic:StripTextures(true)
+            CA2.RarityLimitsFrame.Epic:CreateBackdrop("Transparent")
+            CA2.RarityLimitsFrame.Rare:StripTextures(true)
+            CA2.RarityLimitsFrame.Rare:CreateBackdrop("Transparent")
+            CA2.RarityLimitsFrame.Uncommon:StripTextures(true)
+            CA2.RarityLimitsFrame.Uncommon:CreateBackdrop("Transparent")
+        end
+    else
+        for i = 1, 11 do
+            local knownspell = _G["CA2.CA2.HSKnown.Content.SpellButton"..i]
+            local buttonName = knownspell:GetName()
+        
+            knownspell.SpellName:FontTemplate(nil, 12)
+            knownspell.BG:StripTextures(true)
+            --knownspell.BG:CreateBackdrop("Transparent")
+            knownspell.BG:SetSize(256,64)
+          end
   end
 
 end
