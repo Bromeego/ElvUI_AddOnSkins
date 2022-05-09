@@ -482,90 +482,122 @@ end
 
 -- Heroic Architect
 local function HandleBuildCreator()
-    local BuildCreator = BuildCreator
+    local BC = BuildCreator
 
-    BuildCreator:StripTextures(true)
-    BuildCreator:CreateBackdrop("Transparent")
-    BuildCreator.TitleText:FontTemplate(nil,12)
+    BC:StripTextures(true)
+    BC:CreateBackdrop("Transparent")
+    BC.TitleText:FontTemplate(nil,12)
 
     -- Search
-    S:HandleEditBox(BuildCreator.SearchBox)
+    S:HandleEditBox(BC.SearchBox)
 
     -- Dropdown
-    S:HandleDropDownBox(BuildCreator.RoleDropDown)
-    UIDropDownMenu_JustifyText(BuildCreator.RoleDropDown, "LEFT")
+    S:HandleDropDownBox(BC.RoleDropDown)
+    UIDropDownMenu_JustifyText(BC.RoleDropDown, "LEFT")
 
     --Close button
     S:HandleCloseButton(BuildCreatorCloseButton)
 
     --Categories (Level Select)
-    BuildCreator.Categories:StripTextures(true)
+    BC.Categories:StripTextures(true)
 
-    S:HandleButton(BuildCreator.Categories.tabActive)
-    BuildCreator.Categories.tabActive:StripTextures(true)
-    BuildCreator.Categories.tabActive:CreateBackdrop("Default")
+    S:HandleButton(BC.Categories.tabActive)
+    BC.Categories.tabActive:StripTextures(true)
+    BC.Categories.tabActive:CreateBackdrop("Default")
 
-    S:HandleButton(BuildCreator.Categories.tabFeatured)
-    BuildCreator.Categories.tabFeatured:StripTextures(true)
-    BuildCreator.Categories.tabFeatured:CreateBackdrop("Default")
+    S:HandleButton(BC.Categories.tabFeatured)
+    BC.Categories.tabFeatured:StripTextures(true)
+    BC.Categories.tabFeatured:CreateBackdrop("Default")
 
-    S:HandleButton(BuildCreator.Categories.tabLevel60)
-    BuildCreator.Categories.tabLevel60:StripTextures(true)
-    BuildCreator.Categories.tabLevel60:CreateBackdrop("Default")
+    S:HandleButton(BC.Categories.tabLevel60)
+    BC.Categories.tabLevel60:StripTextures(true)
+    BC.Categories.tabLevel60:CreateBackdrop("Default")
 
-    S:HandleButton(BuildCreator.Categories.tabLevel60PvE)
-    BuildCreator.Categories.tabLevel60PvE:StripTextures(true)
-    BuildCreator.Categories.tabLevel60PvE:CreateBackdrop("Default")
+    S:HandleButton(BC.Categories.tabLevel60PvE)
+    BC.Categories.tabLevel60PvE:StripTextures(true)
+    BC.Categories.tabLevel60PvE:CreateBackdrop("Default")
 
-    S:HandleButton(BuildCreator.Categories.tabLevel60PvP)
-    BuildCreator.Categories.tabLevel60PvP:StripTextures(true)
-    BuildCreator.Categories.tabLevel60PvP:CreateBackdrop("Default")
+    S:HandleButton(BC.Categories.tabLevel60PvP)
+    BC.Categories.tabLevel60PvP:StripTextures(true)
+    BC.Categories.tabLevel60PvP:CreateBackdrop("Default")
 
-    S:HandleButton(BuildCreator.Categories.tabLevel70)
-    BuildCreator.Categories.tabLevel70:StripTextures(true)
-    BuildCreator.Categories.tabLevel70:CreateBackdrop("Default")
+    S:HandleButton(BC.Categories.tabLevel70)
+    BC.Categories.tabLevel70:StripTextures(true)
+    BC.Categories.tabLevel70:CreateBackdrop("Default")
 
-    S:HandleButton(BuildCreator.Categories.tabLevel70PvE)
-    BuildCreator.Categories.tabLevel70PvE:StripTextures(true)
-    BuildCreator.Categories.tabLevel70PvE:CreateBackdrop("Default")
+    S:HandleButton(BC.Categories.tabLevel70PvE)
+    BC.Categories.tabLevel70PvE:StripTextures(true)
+    BC.Categories.tabLevel70PvE:CreateBackdrop("Default")
 
-    S:HandleButton(BuildCreator.Categories.tabLevel70PvP)
-    BuildCreator.Categories.tabLevel70PvP:StripTextures(true)
-    BuildCreator.Categories.tabLevel70PvP:CreateBackdrop("Default")
+    S:HandleButton(BC.Categories.tabLevel70PvP)
+    BC.Categories.tabLevel70PvP:StripTextures(true)
+    BC.Categories.tabLevel70PvP:CreateBackdrop("Default")
 
-    S:HandleButton(BuildCreator.Categories.tabFresh)
-    BuildCreator.Categories.tabFresh:StripTextures(true)
-    BuildCreator.Categories.tabFresh:CreateBackdrop("Default")
+    S:HandleButton(BC.Categories.tabFresh)
+    BC.Categories.tabFresh:StripTextures(true)
+    BC.Categories.tabFresh:CreateBackdrop("Default")
 
     -- Cancel Button - Build Load
     S:HandleButton(BuildCreatorLoadingStopButton)
        
-    -- Leveling Frame (Build Select)
-    BuildCreator.PreviewLeveling:StripTextures(true)
-    BuildCreator.PreviewLeveling:CreateBackdrop("Default")
-    BuildCreator.PreviewLeveling.bottomFrame:StripTextures(true)
-    S:HandleButton(BuildCreator.PreviewLeveling.LearnAllButton)
-    S:HandleButton(BuildCreator.PreviewLeveling.ActivateButton)
-  --  S:HandleNextPrevButton(BuildCreator.PreviewLeveling.scrollFrame.ArrowL, "left")
-  --  S:HandleNextPrevButton(BuildCreator.PreviewLeveling.scrollFrame.ArrowR, "right")
-  BuildCreator.PreviewMax:StripTextures(true)
-  BuildCreator.PreviewMax:CreateBackdrop("Default")
-    BuildCreator.PreviewMax.bottomFrame:StripTextures(true)
-    S:HandleButton(BuildCreator.PreviewMax.LearnAllButton)
-    S:HandleButton(BuildCreator.PreviewMax.ActivateButton)
---    S:HandleCloseButton(BuildCreator.PreviewMaxBackButton)
+    -- Build Select - Leveling
+    --BC.BuildExplorer.HSBuilds.Content:StripTextures(true)
+    --BC.LevelingFrame.BuildCreator.LevelingFrame.HSBuilds.Content:StripTextures(true)
+    --BC.LevelingFrame:StripTextures(true)
+
+    -- Scrollbar
+    --S:HandleScrollBar(BC.LevelingFrame.HSBuilds.Scroll.scrollBar
+
+    for i = 1, 3 do
+        local builds = _G["BuildCreator.LevelingFrame.BuildCreator.LevelingFrame.HSBuilds.Content.SpecButton"..i]
+
+    end
+
+        -- Selected Build Window - Leveling
+        BC.PreviewLeveling:StripTextures(true)
+        BC.PreviewLeveling:CreateBackdrop("Default")
+        BC.PreviewLeveling.bottomFrame:StripTextures(true)
+        S:HandleButton(BC.PreviewLeveling.LearnAllButton)
+        S:HandleButton(BC.PreviewLeveling.ActivateButton)
+      --  S:HandleNextPrevButton(BC.PreviewLeveling.scrollFrame.ArrowL, "left")
+      --  S:HandleNextPrevButton(BC.PreviewLeveling.scrollFrame.ArrowR, "right")
+
+
+
+    -- Build Select Screen Max
+    --BC.BuildExplorer.HSBuilds.Content:StripTextures(true)
+
+        -- Scrollbar
+      --S:HandleScrollBar(BC.BuildExplorer.HSBuilds.Scroll.scrollBar)
+
+        for i = 1, 5 do
+            local builds = _G["BuildCreator.LevelingFrame.BuildCreator.BuildExplorer.HSBuilds.Content.SpecButton"..i]
+        --builds:StripTextures(true)
+        end
+
+        -- Selected Build Window - Max Level
+        BC.PreviewMax:StripTextures(true)
+        BC.PreviewMax:CreateBackdrop("Default")
+        BC.PreviewMax.bottomFrame:StripTextures(true)
+        BC.PreviewMax.titleText:FontTemplate(nil,12)
+        S:HandleButton(BC.PreviewMax.LearnAllButton)
+        S:HandleButton(BC.PreviewMax.ActivateButton)
+    --    S:HandleCloseButton(BC.PreviewMaxBackButton) -- Not a "real" close button
+
+        -- Scrollbar
+      --S:HandleScrollBar(BuildCreator.LevelingFrame.BuildCreator.LevelingFrame.HSBuilds.Scroll.scrollBar)
 
     -- Mainscreen Choose Build Buttons
     --S:HandleButton(M.ManagerButton)
 
     -- Main Screen Scroll Bar
-    --S:HandleScrollBar(BuildCreator.LevelingFrame.BuildCreator.LevelingFrame.HSBuilds.Scroll.scrollBar)
+    
 
     -- Create Build Button
-    S:HandleButton(BuildCreator.EditorButton)
+    S:HandleButton(BC.EditorButton)
 
     -- Refresh Build Button
-    S:HandleButton(BuildCreator.LevelingFrame.RefreshButton)
+    S:HandleButton(BC.LevelingFrame.RefreshButton)
 
 end
 
