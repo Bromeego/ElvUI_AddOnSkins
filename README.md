@@ -1,8 +1,11 @@
-[![Game Version](https://img.shields.io/badge/wow-3.3.5-blue.svg)](https://github.com/ElvUI-WotLK)
+[![Game Version](https://img.shields.io/badge/wow-3.3.5-blue.svg)](https://github.com/BanditTech/ElvUI-Ascension)
 [![Discord](https://discordapp.com/api/guilds/259362419372064778/widget.png?style=shield)](https://discord.gg/UXSc7nt)
 # ElvUI_AddOnSkins - Wrath of the Lich King (3.3.5a)
 
-ElvUI_AddOnSkins is a plugin for [ElvUI](https://github.com/ElvUI-WotLK/ElvUI) which skins other AddOns to make them look like ElvUI.
+### This version is meant for Ascension Classless WOW server
+It may work for other 3.3.5 servers, however, there have been addons modified to work specifically with Ascension WoW.
+
+ElvUI_AddOnSkins is a plugin for [ElvUI-Ascension](https://github.com/BanditTech/ElvUI-Ascension) which skins other AddOns to make them look like ElvUI.
 
 ## Currently Supported AddOns:
 1. _NPCScan
@@ -74,6 +77,7 @@ ElvUI_AddOnSkins is a plugin for [ElvUI](https://github.com/ElvUI-WotLK/ElvUI) w
 1. QuestGuru
 1. QuestGuru_Tracker
 1. QuestPointer
+1. Quick DKP V2
 1. RaidCooldowns
 1. RaidRoll
 1. RCLootCouncil
@@ -100,4 +104,3 @@ ElvUI_AddOnSkins is a plugin for [ElvUI](https://github.com/ElvUI-WotLK/ElvUI) w
 1. ZOMGBuffs
 1. ZygorGuidesViewer
 1. ZygorTalentAdvisor
-1. Quick DKP V2
