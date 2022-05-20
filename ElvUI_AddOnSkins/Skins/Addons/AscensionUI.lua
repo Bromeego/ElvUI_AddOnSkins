@@ -499,6 +499,7 @@ local function HandleCharacterAdvancement()
             local cards = _G["CA2.CardsControllerMenu.SkillCardsMenu.cards.Card"..i]
             cards:StripTextures(true)
             cards:CreateBackdrop("Default")
+            S:HandleButton(cards.shine.okButton)
         end
 
     --Close button
