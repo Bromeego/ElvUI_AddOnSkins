@@ -165,9 +165,9 @@ local function HandleMysticEnchants()
     -- Collection Enchants
         for i = 1, 15 do
             local frame = _G["CollectionItemFrame"..i]
+            _G["CollectionItemFrame"..i..".Button.TextNormal"]:FontTemplate(nil,12)
             frame:CreateBackdrop("Transparent")
             frame:SetSize(145, 40)
-            --frame.Text:FontTemplate(nil,12)
             frame.BackgroundTexture:SetSize(40, 40)
             frame.IconHighlight:Hide()
             frame.BG:Hide()
