@@ -69,11 +69,14 @@ local function HandleVanity()
 
         for i = 1, 9 do
             local name = "StoreCollectionItemFrame"..i
+            _G["StoreCollection"..i..".TextNormal"]:FontTemplate(nil,12)
             local button = _G[name..".Button"]
             button:CreateBackdrop("Transparent")
+            --button.Name:FontTemplate(nil,12)
             button.backdrop:SetBackdropBorderColor(0.90, 0.80, 0.50)
             _G[name..".BackgroundTexture"]:Hide()
             _G[name..".PrestigeTexture"]:Hide()
+
         end
 
     -- Banner Item
@@ -81,14 +84,19 @@ local function HandleVanity()
         V.Banner.Glow:Hide()
         S:HandleIcon(V.Banner.Icon)
         V.Banner.Icon:GetParent():SetBackdropBorderColor(0.90, 0.80, 0.50)
-        V.Banner.TitleText:SetFont("Fonts\\FRIZQT__.ttf", 12)
+        V.Banner.TitleText:FontTemplate(nil,12)
         V.Banner.DescText:SetSize(225, 0)
+        V.Banner.DescText:FontTemplate(nil,12)
 
     -- Left Preview Thing
-        V.Paper.TitleText:SetFont("Fonts\\FRIZQT__.TTF", 18, "OUTLINE")
+        V.Paper.TitleText:FontTemplate(nil, 18, "OUTLINE")
+        V.Paper.DescText:FontTemplate(nil,12)
 
     -- Collection Header
-        V.CollectionList.TitleText:SetFont("Fonts\\FRIZQT__.TTF", 14, "OUTLINE")
+        V.CollectionList.TitleText:FontTemplate(nil,14, "OUTLINE")
+
+    -- Page Number
+        V.CollectionList.PageText:FontTemplate(nil,12)
 end
 
 -- Enchants
